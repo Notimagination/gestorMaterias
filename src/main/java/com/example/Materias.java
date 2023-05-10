@@ -2,7 +2,7 @@ package com.example;
 
 import java.util.HashMap;
 
-public class Materia {
+public class Materias {
 
     String nombre;
     static HashMap<Integer, String> correlativas = new HashMap<>();
