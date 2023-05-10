@@ -1,32 +1,65 @@
 package com.example;
 
-import javax.swing.JOptionPane;
+import java.awt.event.*;  
+import javax.swing.*;  
 
 public class Menu {
+    
+    public static void menuPrincipal() {
+        
+        JFrame menuPrincipal = new JFrame("Menú principal");
+        ImageIcon img = new ImageIcon("C:\\Users\\User\\Desktop\\CursadaUni\\resources\\menu.png");
+        
+        JButton primerBoton = new JButton("Inscribirse a materias");
+        JButton segundoBoton = new JButton("Consultar estado de cursada");
+        JButton tercerBoton = new JButton("Salir del menu");
 
-    public static void datos() {
+        primerBoton.setBounds(50,20,200,30);
+        segundoBoton.setBounds(50,60,200,30);
+        tercerBoton.setBounds(50,100,200,30);
 
-        int opcion;
+        menuPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        do {
+        primerBoton.addActionListener(new ActionListener() {  
             
-            opcion = Integer.parseInt(JOptionPane.showInputDialog("Ingresá una opción\n\n[1] Ingresar datos\n[2] Inscripción a materias\n[3] Verificar inscripciones\n[4] Cerrar menú"));
-        
-        } while(opcion  < 1 || opcion > 4);
-        
-        switch(opcion) {
-            
-            case 1: Alumno.agregarDatos();
-                    break;
-            case 2: Inscripcion.InscripcionMat();
-                    break;
-            case 3:
-                    break;
+            public void actionPerformed(ActionEvent e){  
+                
+                Inscripciones.agregarDatos();
 
             }
+        
+        });
 
-        }
+        menuPrincipal.setResizable(false);
+        menuPrincipal.setIconImage(img.getImage());
+        menuPrincipal.add(primerBoton);
+        menuPrincipal.add(segundoBoton);
+        menuPrincipal.add(tercerBoton);
+        menuPrincipal.setSize(300,200);
+        menuPrincipal.setLocationRelativeTo(null);  
+        menuPrincipal.setLayout(null);
+        menuPrincipal.setVisible(true);
+   
+        segundoBoton.addActionListener(new ActionListener() {
+            
+            public void actionPerformed(ActionEvent e){
+                
+                ConsultaCursada.InscripcionMat();
+            
+            }
+        
+        });
+        
+        tercerBoton.addActionListener(new ActionListener() {
+            
+            public void actionPerformed(ActionEvent e){
 
+                System.exit(0);
+            
+            }
+        
+        });
+    
     }
 
-
+}
