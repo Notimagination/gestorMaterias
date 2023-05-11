@@ -19,7 +19,15 @@ public class ConsultaCursada {
 
         do {
             
-            legajo = Integer.parseInt((String) JOptionPane.showInputDialog(null,"Ingresá tu legajo para continuar","Consultar cursadas", JOptionPane.INFORMATION_MESSAGE, iconReg, null,""));
+            legajo = Integer.parseInt((String) JOptionPane.showInputDialog(
+
+                null,
+                "Ingresá tu legajo para continuar",
+                "Consultar cursadas", 
+                JOptionPane.INFORMATION_MESSAGE,
+                 iconReg,
+                 null,
+                  ""));
         
         } while(Integer.toString(legajo).length() < 5 || Integer.toString(legajo).length() > 5);
 
@@ -28,14 +36,34 @@ public class ConsultaCursada {
 
         if(legajo != getLegajo.getLegajo()) {
 
-            JOptionPane.showOptionDialog (null, "El estudiante con el legajo ingresado no se encuentra en la base de datos.\nVerificá que lo escribiste correctamente e intentalo nuevamente.", "Legajo no registrado", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, iconDB, salir, 0);
+            JOptionPane.showOptionDialog (
+
+                null, 
+                "El estudiante con el legajo ingresado no se encuentra en la base de datos.\nVerificá que lo escribiste correctamente e intentalo nuevamente.", 
+                "Legajo no registrado", 
+                JOptionPane.YES_NO_CANCEL_OPTION, 
+                JOptionPane.PLAIN_MESSAGE, 
+                iconDB, 
+                salir, 
+                0);
         
         } else {
 
             BaseDatos nombre = new BaseDatos();
             nombre.comprobarDatos();
 
-            JOptionPane.showOptionDialog (null, "¡Hola de nuevo, "+ nombre.getNombre() +"!\n\nEsta es una breve información sobre tu situación\n\nActualmente cursando:\n\n• Física\n\nMaterias que podés cursar:\n\n• Ingés\n• Física II", "Consulta sobre cursada", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, iconStu, salir, 0);
+            JOptionPane.showOptionDialog (
+
+                null,
+                 "¡Hola de nuevo, "+ nombre.getNombre() +
+                "!\n\nEsta es una breve información sobre tu situación.\n\nActualmente cursando:\n\n• "
+                + Inscripciones.getAlmacenar()+"\n\nMaterias que podés cursar:\n\n• Ingés\n• Física II", 
+                "Consulta sobre cursada", 
+                JOptionPane.YES_NO_CANCEL_OPTION, 
+                JOptionPane.PLAIN_MESSAGE, 
+                iconStu, 
+                salir, 
+                0);
     }}
 
     public static int getMateria() {
