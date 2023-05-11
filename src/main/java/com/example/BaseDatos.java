@@ -44,7 +44,8 @@ public class BaseDatos {
 
             while(rs.next()) {
 
-                if(rs.getInt("lejago") == Inscripciones.getLegajo() || rs.getInt("lejago") == ConsultaCursada.getLegajo()) {
+                if(rs.getInt("lejago") == Inscripciones.getLegajo() 
+                || rs.getInt("lejago") == ConsultaCursada.getLegajo()) {
 
                     estudiantes.add(rs.getString("nombre"));
                     legajos.add(rs.getInt("lejago"));
@@ -73,7 +74,18 @@ public class BaseDatos {
 
             conectar = DriverManager.getConnection(ruta, usuario, contraseña);
 
-            JOptionPane.showOptionDialog (null, "El alumno ha sido correctamente inscripto a la universidad.\n\nDatos registrados:\n\nNombre: " + Inscripciones.getNombre() + "\nLegajo: " + Inscripciones.getLegajo() + "\n\nAhora podés inscribirte a las materias desde el menú principal.", "Registro exitoso", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, iconCheck, salir, 0);
+            JOptionPane.showOptionDialog (
+
+                null, 
+                "El alumno ha sido correctamente inscripto a la universidad.\n\nDatos registrados:\n\nNombre: " + Inscripciones.getNombre() + 
+                "\nLegajo: " + Inscripciones.getLegajo() + 
+                "\n\nAhora podés inscribirte a las materias desde el menú principal.",
+                 "Registro exitoso", 
+                 JOptionPane.YES_NO_CANCEL_OPTION, 
+                 JOptionPane.PLAIN_MESSAGE, 
+                 iconCheck, 
+                 salir, 
+                 0);
 
             java.sql.Statement stmt = conectar.createStatement();
 
@@ -83,7 +95,16 @@ public class BaseDatos {
 
         } catch (Exception e) {
 
-            JOptionPane.showOptionDialog (null, "Hubo un error al conectar con la base de datos. No se ha podido completar el registro.\n\nCódigo de error: " + e, "Error al registrar", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, iconError, salir, 0);
+            JOptionPane.showOptionDialog (
+
+                null, 
+                "Hubo un error al conectar con la base de datos. No se ha podido completar el registro.\n\nCódigo de error: " + e,
+                 "Error al registrar", 
+                 JOptionPane.YES_NO_CANCEL_OPTION, 
+                 JOptionPane.PLAIN_MESSAGE, 
+                 iconError, 
+                 salir, 
+                 0);
 
         }
 
@@ -98,17 +119,36 @@ public class BaseDatos {
 
             conectar = DriverManager.getConnection(ruta, usuario, contraseña);
 
-            JOptionPane.showOptionDialog (null, "¡Te inscribiste exitosamente a la materia MATERIA!.", "Registro exitoso", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, iconCheck, salir, 0);
+            JOptionPane.showOptionDialog (
+
+                null, 
+                "¡Te inscribiste exitosamente a la materia!\n\nMateria: "+ Inscripciones.getAlmacenar() + 
+                "\nCódigo: " + Inscripciones.getAlmacenarCod(), 
+                "Registro exitoso", 
+                JOptionPane.YES_NO_CANCEL_OPTION, 
+                JOptionPane.PLAIN_MESSAGE, 
+                iconCheck, 
+                salir, 
+                0);
 
             java.sql.Statement stmt = conectar.createStatement();
 
-            stmt.executeUpdate("UPDATE alumnos set materias = \"" + 99999 + "\" where lejago = \"" + Inscripciones.getLegajo() + "\"");
+            stmt.executeUpdate("UPDATE alumnos set materias = \"" + Inscripciones.getAlmacenarCod() + "\" where lejago = \"" + Inscripciones.getLegajo() + "\"");
 
             conectar.close();
 
         } catch (Exception e) {
 
-            JOptionPane.showOptionDialog (null, "Hubo un error al conectar con la base de datos. No se han podido actualizar los datos.\n\nCódigo de error: " + e, "Error al modificar", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, iconError, salir, 0);
+            JOptionPane.showOptionDialog (
+
+                null, 
+                "Hubo un error al conectar con la base de datos. No se han podido actualizar los datos.\n\nCódigo de error: " + e, 
+                "Error al modificar", 
+                JOptionPane.YES_NO_CANCEL_OPTION, 
+                JOptionPane.PLAIN_MESSAGE, 
+                iconError, 
+                salir, 
+                0);
         }
 
         return conectar;
