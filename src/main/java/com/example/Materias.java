@@ -1,4 +1,4 @@
-package com.example;
+/*package com.example;
 
 import java.util.HashMap;
 
@@ -43,10 +43,10 @@ public class Materias {
         materiasCorrelativas.put(41408, "Modelos, Simulación y Teoría de la Decisión");
         materiasCorrelativas.put(41409, "Sistemas Distribuidos y Programación Paralela");
         materiasCorrelativas.put(11086, "Programación en Ambiente Web");
-        materiasCorrelativas.put(11087, "Seminario de Integración Profesional");
+        materiasCorrelativas.put(11087, "	Seminario de Integración Profesional");
         
         return null;
 
     }
 
-}
+}*/
